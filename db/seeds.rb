@@ -9,3 +9,66 @@
 # Adds two courses
 Course.create(year: 2016)
 Course.create(year: 2017)
+
+# Adds some exams per course
+# 2016
+course16 = Course.first
+Exam.create([{
+              title: "Examen 1",
+              description: "Sobre conceptos del lenguaje",
+              min_grade: rand(4..6),
+              exam_date: Date.new(2016,10,9),
+              course_id: course16.id
+            },{
+              title: "Examen 2",
+              description: "sobre gemas...",
+              min_grade: rand(4..6),
+              exam_date: Date.new(2016, 10, 25),
+              course_id: course16.id
+            },{
+              title: "Examen 3",
+              description: "sobre testing...",
+              min_grade: rand(4..6),
+              exam_date: Date.new(2016,11,15),
+              course_id: course16.id
+            },{
+              title: "Trabajo integrador",
+              description: "Rails",
+              min_grade: rand(4..6),
+              exam_date: Date.new(2016,12,11),
+              course_id: course16.id
+            }])
+
+course17=Course.last()
+
+Exam.create([{
+              title: "Examen 1",
+              description: "Sobre conceptos del lenguaje",
+              min_grade: rand(4..6),
+              exam_date: Date.new(2017,9,5),
+              course_id: course17.id
+            },{
+              title: "Examen 2",
+              description: "sobre gemas...",
+              min_grade: rand(4..6),
+              exam_date: Date.new(2017, 10, 7),
+              course_id: course17.id
+            },{
+              title: "Examen 3",
+              description: "sobre testing...",
+              min_grade: rand(4..6),
+              exam_date: Date.new(2017,11,15),
+              course_id: course17.id
+            },{
+              title: "Examen 4",
+              description: "Sinatra",
+              min_grade: rand(4..6),
+              exam_date: Date.new(2017,12,10),
+              course_id: course17.id
+            },{
+              title: "Trabajo integrador",
+              description: "Rails",
+              min_grade: rand(4..6),
+              exam_date: Date.new(2017,12,20),
+              course_id: course17.id
+            }])
