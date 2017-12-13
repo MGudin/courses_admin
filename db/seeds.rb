@@ -18,25 +18,25 @@ Exam.create([{
               description: "Sobre conceptos del lenguaje",
               min_grade: rand(4..6),
               exam_date: Date.new(2016,10,9),
-              course_id: course16.id
+              course: course16
             },{
               title: "Examen 2",
               description: "sobre gemas...",
               min_grade: rand(4..6),
               exam_date: Date.new(2016, 10, 25),
-              course_id: course16.id
+              course: course16
             },{
               title: "Examen 3",
               description: "sobre testing...",
               min_grade: rand(4..6),
               exam_date: Date.new(2016,11,15),
-              course_id: course16.id
+              course: course16
             },{
               title: "Trabajo integrador",
               description: "Rails",
               min_grade: rand(4..6),
               exam_date: Date.new(2016,12,11),
-              course_id: course16.id
+              course: course16
             }])
 
 course17=Course.last()
@@ -46,31 +46,31 @@ Exam.create([{
               description: "Sobre conceptos del lenguaje",
               min_grade: rand(4..6),
               exam_date: Date.new(2017,9,5),
-              course_id: course17.id
+              course: course17
             },{
               title: "Examen 2",
               description: "sobre gemas...",
               min_grade: rand(4..6),
               exam_date: Date.new(2017, 10, 7),
-              course_id: course17.id
+              course: course17
             },{
               title: "Examen 3",
               description: "sobre testing...",
               min_grade: rand(4..6),
               exam_date: Date.new(2017,11,15),
-              course_id: course17.id
+              course: course17
             },{
               title: "Examen 4",
               description: "Sinatra",
               min_grade: rand(4..6),
               exam_date: Date.new(2017,12,10),
-              course_id: course17.id
+              course: course17
             },{
               title: "Trabajo integrador",
               description: "Rails",
               min_grade: rand(4..6),
               exam_date: Date.new(2017,12,20),
-              course_id: course17.id
+              course: course17
             }])
 
 ## adds some Students
@@ -81,7 +81,7 @@ Exam.create([{
     last_name: "Apellido #{i}",
     dni: rand(10000000..40000000),
     student_number: rand(0..100000),
-    course_id: course16.id)
+    course: course16)
 end
 
 10.times do |i|
@@ -90,5 +90,14 @@ end
     last_name: "Apellido #{i}",
     dni: rand(10000000..40000000),
     student_number: rand(0..100000),
-    course_id: course17.id)
+    course: course17)
 end
+
+# Add grades.
+
+Student.all.each do |student|
+  Course.exams_by_year(student.course.year).each do |exam|
+    Grade.create(exam_id: exam, student: student, grade: rand(0..10))
+  end
+end
+
