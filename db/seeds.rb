@@ -72,3 +72,23 @@ Exam.create([{
               exam_date: Date.new(2017,12,20),
               course_id: course17.id
             }])
+
+## adds some Students
+
+10.times do |i|
+  Student.create(
+    name: "Nombre #{i}",
+    last_name: "Apellido #{i}",
+    dni: rand(10000000..40000000),
+    student_number: rand(0..100000),
+    course_id: course16.id)
+end
+
+10.times do |i|
+  Student.create(
+    name: "Nombre #{i}",
+    last_name: "Apellido #{i}",
+    dni: rand(10000000..40000000),
+    student_number: rand(0..100000),
+    course_id: course17.id)
+end

@@ -1,3 +1,4 @@
 class Course < ApplicationRecord
-  has_many :exam
+  has_many :exams
+  has_many :students
 end
