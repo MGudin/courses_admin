@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  last_name: MyString
+  name: un_estudiante
+  last_name: u_estudiante_ap
   dni: 1
-  studen_number: 1
+  student_number: 1
+  course_id: 1
 
 two:
-  name: MyString
-  last_name: MyString
-  dni: 1
-  studen_number: 1
+  name: otro_estudiante
+  last_name: o_estudiante_ap
+  dni: 2
+  student_number: 2
+  course_id: 2
