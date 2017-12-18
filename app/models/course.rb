@@ -3,7 +3,8 @@ class Course < ApplicationRecord
   has_many :students
 
   # Validations
-  validates :year, presence: true, uniqueness: true
+  validates :year, presence: true
+  validates :year, uniqueness: true
 
   scope :exams_by_year, -> (a_year) { find_by(year: a_year).exams}
 end
