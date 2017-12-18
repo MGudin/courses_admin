@@ -4,8 +4,10 @@ one:
   grade: 10
   student: one
   exam: one
+  course: one
 
 two:
   grade: 3
   student: two
   exam: two
+  course: two
