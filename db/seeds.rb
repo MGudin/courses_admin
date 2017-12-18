@@ -97,7 +97,7 @@ end
 
 Student.all.each do |student|
   Course.exams_by_year(student.course.year).each do |exam|
-    Grade.create(exam_id: exam, student: student, grade: rand(0..10))
+    Grade.create(exam: exam, student: student, grade: rand(0..10), course: student.course)
   end
 end
 

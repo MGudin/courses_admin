@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171218161621) do
+ActiveRecord::Schema.define(version: 20171218202945) do
 
   create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "year", null: false
@@ -32,10 +32,12 @@ ActiveRecord::Schema.define(version: 20171218161621) do
 
   create_table "grades", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "grade", null: false
-    t.bigint "student_id"
-    t.bigint "exam_id"
+    t.bigint "student_id", null: false
+    t.bigint "exam_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "course_id", null: false
+    t.index ["course_id"], name: "index_grades_on_course_id"
     t.index ["exam_id"], name: "index_grades_on_exam_id"
     t.index ["student_id"], name: "index_grades_on_student_id"
   end
@@ -51,6 +53,7 @@ ActiveRecord::Schema.define(version: 20171218161621) do
     t.index ["course_id"], name: "index_students_on_course_id"
   end
 
+  add_foreign_key "grades", "courses"
   add_foreign_key "grades", "exams"
   add_foreign_key "grades", "students"
 end
