@@ -22,11 +22,11 @@ class Exam < ApplicationRecord
   validates :course,
             presence: true
 
-  def students_pass_mark
+  def approved_students
    self.grades.where('grade>=?', self.min_grade).size
   end
 
-  def students_not_pass_mark
+  def unapproved_students
     self.grades.where('grade<?', self.min_grade).size
   end
 end

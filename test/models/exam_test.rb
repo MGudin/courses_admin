@@ -33,41 +33,41 @@ class ExamTest < ActiveSupport::TestCase
     end
 
     ## Students approved quantity
-    test "exam responds to students_pass_mark method" do
+    test "exam responds to #approved_students method" do
       exam = Exam.first
-      assert_respond_to exam, :students_pass_mark
+      assert_respond_to exam, :approved_students
     end
 
-    test "exam student pass_mark returns 0 when no grades related" do
+    test "#approved_students returns 0 when no grades related" do
       exam = sample_exam
       exam.save
-      assert_equal 0, exam.students_pass_mark
+      assert_equal 0, exam.approved_students
     end
 
-    test "exam returns correct values based on fixture" do
+    test "#approved_students returns correct values based on fixture" do
       exam2 = Exam.find_by(title: "examen_dos")
-      assert_equal 1, exam2.students_pass_mark
+      assert_equal 1, exam2.approved_students
       exam1 = Exam.first
-      assert_equal 1, exam1.students_pass_mark
+      assert_equal 1, exam1.approved_students
     end
 
     ## Students unapproved quantity
-    test "exam responds to students_not_passed_mark method" do
+    test "exam responds to #unapproved_students method" do
       exam = Exam.first
-      assert_respond_to exam, :students_not_pass_mark
+      assert_respond_to exam, :unapproved_students
     end
 
-    test "exam student_not_pass_mark returns 0 when no grades related" do
+    test "#unapproved_students returns 0 when no grades related" do
       exam = sample_exam
       exam.save
-      assert_equal 0, exam.students_not_pass_mark
+      assert_equal 0, exam.unapproved_students
     end
 
-    test "exam student_not_pass_mark returns correct values based on fixture" do
+    test "#unapproved_student returns correct values based on fixture" do
       exam2 = Exam.find_by(title: "examen_dos")
-      assert_equal 1, exam2.students_not_pass_mark
+      assert_equal 1, exam2.unapproved_students
       exam1 = Exam.first
-      assert_equal 0, exam1.students_not_pass_mark
+      assert_equal 0, exam1.unapproved_students
     end
 
     
