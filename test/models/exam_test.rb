@@ -49,7 +49,7 @@ class ExamTest < ActiveSupport::TestCase
                 description: "Conceptos basicos del lenguaje",
                 min_grade: 4,
                 exam_date: DateTime.new,
-                course_id: 1})
+                course_id: Course.first})
     end
     
       

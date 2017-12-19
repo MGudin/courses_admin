@@ -69,7 +69,7 @@ class StudentTest < ActiveSupport::TestCase
     student = student_with_attr student_number: -1
     assert_not student.valid?
   end
-
+## Preguntar por validaciones
   test "student email has propper format" do
     student = student_with_attr email: "sarasa"
     puts student.valid?
@@ -89,6 +89,6 @@ class StudentTest < ActiveSupport::TestCase
                 dni: 32333444,
                 student_number: 123232,
                 email: "sarasa@gmail.com",
-                course_id: 1)
+                course_id: Course.first)
   end
 end

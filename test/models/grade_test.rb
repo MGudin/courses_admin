@@ -9,9 +9,9 @@ class GradeTest < ActiveSupport::TestCase
   private
   def sample_grade
     Grade.new(grade: 6,
-              course_id: 1,
-              exam_id: 2,
-              student_id: 2)
+              course_id: Course.first,
+              exam_id: Exam.first,
+              student_id: Student.first)
   end
 
   def grade_with_attr **attrs
