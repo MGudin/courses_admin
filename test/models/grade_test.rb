@@ -29,6 +29,17 @@ class GradeTest < ActiveSupport::TestCase
     another_grade.course = Course.last
     assert_not another_grade.save
   end
+
+  # test "test grade cant be saved if exam date is future" do
+  #   exam = Exam.create title: "un examen futuro",
+  #                      description: "sobre Rails 6.5",
+  #                      min_grade: 3,
+  #                      exam_date: DateTime.tomorrow,
+  #                      course: Course.last()
+    
+  #   grade = grade_with_attr exam: exam
+  #   assert_not grade.save
+  # end
   
   private
   def sample_grade
