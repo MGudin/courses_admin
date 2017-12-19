@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class StudentTest < ActiveSupport::TestCase
+  ## required attrs tests
   test "test student cant be saved without name" do
     student = student_with_attr name: nil
     assert_not student.valid?
@@ -31,12 +32,13 @@ class StudentTest < ActiveSupport::TestCase
     assert_not student.valid?
   end
   
+  ## name validations
   test "name size should not be greater than 20" do
     student = student_with_attr name: "un nombre realmente muy largo"
     assert_not student.valid?
   end
 
-  test "name size should not be greater than 0" do
+  test "name cant be blank" do
     student = student_with_attr name: ""
     assert_not student.valid?
   end
@@ -52,7 +54,7 @@ class StudentTest < ActiveSupport::TestCase
   end
 
   test "dni should be an integer value" do
-    student = student_with_attr dni: 12.34
+    student = student_with_attr dni: Float(12.34)
     assert_not student.valid?
   end
 
@@ -61,7 +63,7 @@ class StudentTest < ActiveSupport::TestCase
     assert_not student.valid?
   end
   test "student_number should be an integer value" do
-    student = student_with_attr student_number: 12.34
+    student = student_with_attr student_number: Float(12.34)
     assert_not student.valid?
   end
 
@@ -69,11 +71,10 @@ class StudentTest < ActiveSupport::TestCase
     student = student_with_attr student_number: -1
     assert_not student.valid?
   end
-## Preguntar por validaciones
+
   test "student email has propper format" do
     student = student_with_attr email: "sarasa"
-    puts student.valid?
-    assert_not student.valid?
+    assert_not student.save
   end
   
   private
@@ -89,6 +90,6 @@ class StudentTest < ActiveSupport::TestCase
                 dni: 32333444,
                 student_number: 123232,
                 email: "sarasa@gmail.com",
-                course_id: Course.first)
+                course: Course.first)
   end
 end
