@@ -29,4 +29,9 @@ class Exam < ApplicationRecord
   def unapproved_students
     self.grades.where('grade<?', self.min_grade).size
   end
+
+  def absent_students
+    self.course.students.size - self.grades.size
+  end
+
 end

@@ -32,7 +32,7 @@ class ExamTest < ActiveSupport::TestCase
       assert_not exam.valid?
     end
 
-    ## Students approved quantity
+    ## approved students
     test "exam responds to #approved_students method" do
       exam = Exam.first
       assert_respond_to exam, :approved_students
@@ -51,7 +51,7 @@ class ExamTest < ActiveSupport::TestCase
       assert_equal 1, exam1.approved_students
     end
 
-    ## Students unapproved quantity
+    ## unapproved students
     test "exam responds to #unapproved_students method" do
       exam = Exam.first
       assert_respond_to exam, :unapproved_students
@@ -70,7 +70,25 @@ class ExamTest < ActiveSupport::TestCase
       assert_equal 0, exam1.unapproved_students
     end
 
-    
+    ## absent students
+    test "exam responds to #absent_students method" do
+      exam = Exam.first
+      assert_respond_to exam, :absent_students
+    end
+
+    test "#absent_students returns students course count when no grades related" do
+      exam = sample_exam
+      exam.save
+      assert_equal 1, exam.absent_students
+    end
+
+    test "#absent_students returns correct values based on fixture" do
+      exam2 = Exam.find_by(title: "examen_dos")
+      assert_equal 1, exam2.absent_students
+      exam1 = Exam.find_by(title: "examen_uno")
+      assert_equal 0, exam1.absent_students
+    end
+
     private
     def exam_with_attr **attrs
       # returns a new instance of exam with nil attrs
