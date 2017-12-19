@@ -33,7 +33,7 @@ class ExamTest < ActiveSupport::TestCase
     end
 
     ## Students approved quantity
-    test "exam responds to students_passed method" do
+    test "exam responds to students_pass_mark method" do
       exam = Exam.first
       assert_respond_to exam, :students_pass_mark
     end
@@ -49,6 +49,25 @@ class ExamTest < ActiveSupport::TestCase
       assert_equal 1, exam2.students_pass_mark
       exam1 = Exam.first
       assert_equal 1, exam1.students_pass_mark
+    end
+
+    ## Students unapproved quantity
+    test "exam responds to students_not_passed_mark method" do
+      exam = Exam.first
+      assert_respond_to exam, :students_not_pass_mark
+    end
+
+    test "exam student_not_pass_mark returns 0 when no grades related" do
+      exam = sample_exam
+      exam.save
+      assert_equal 0, exam.students_not_pass_mark
+    end
+
+    test "exam student_not_pass_mark returns correct values based on fixture" do
+      exam2 = Exam.find_by(title: "examen_dos")
+      assert_equal 1, exam2.students_not_pass_mark
+      exam1 = Exam.first
+      assert_equal 0, exam1.students_not_pass_mark
     end
 
     

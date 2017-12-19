@@ -25,4 +25,8 @@ class Exam < ApplicationRecord
   def students_pass_mark
    self.grades.where('grade>=?', self.min_grade).size
   end
+
+  def students_not_pass_mark
+    self.grades.where('grade<?', self.min_grade).size
+  end
 end
