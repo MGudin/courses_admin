@@ -89,6 +89,33 @@ class ExamTest < ActiveSupport::TestCase
       assert_equal 0, exam1.absent_students
     end
 
+    ## approved statitics
+    test "exam responds to #approved_rate method" do
+      exam = Exam.first
+      assert_respond_to exam, :approved_rate
+    end
+
+    test "#approved_rate should return zero when there are not related grades" do
+      exam = sample_exam
+      exam.save
+      assert_equal 0, exam.approved_rate
+    end
+
+    test "#approved_rate returns correct values based on fixture" do
+      exam2 = Exam.find_by(title: "examen_dos")
+      assert_equal 50, exam2.approved_rate
+      exam1 = Exam.find_by(title: "examen_uno")
+      assert_equal 100, exam1.approved_rate
+    end
+
+    test "#approved_rate rounds results accordingly. IE: 33.33333 = 33.33" do
+      exam2 = Exam.find_by(title: "examen_dos")
+      student = (exam2.course.students - exam2.students).first
+      # create a grade for the student
+      Grade.create exam: exam2, student: student, course: exam2.course, grade: exam2.min_grade+1
+      assert_equal 66.66, exam2.approved_rate
+    end
+
     private
     def exam_with_attr **attrs
       # returns a new instance of exam with nil attrs

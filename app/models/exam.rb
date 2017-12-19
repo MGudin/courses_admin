@@ -22,6 +22,8 @@ class Exam < ApplicationRecord
   validates :course,
             presence: true
 
+
+  
   def approved_students
    self.grades.where('grade>=?', self.min_grade).size
   end
@@ -32,6 +34,15 @@ class Exam < ApplicationRecord
 
   def absent_students
     self.course.students.size - self.grades.size
+  end
+
+  def approved_rate
+    rate = Float(self.approved_students) / Float(self.grades.count) * 100.0
+    if !rate.finite?
+      0
+    else
+      rate.truncate 2
+    end
   end
 
 end
