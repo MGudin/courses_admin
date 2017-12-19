@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171218202945) do
+ActiveRecord::Schema.define(version: 20171219133627) do
 
   create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "year", null: false
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20171218202945) do
     t.bigint "course_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email", limit: 100, null: false
     t.index ["course_id"], name: "index_students_on_course_id"
   end
 

@@ -74,13 +74,14 @@ Exam.create([{
             }])
 
 ## adds some Students
-
+email_domains = ["gmail.com", "outlook.com", "yahoo.com.ar"]
 10.times do |i|
   Student.create(
     name: "Nombre #{i}",
     last_name: "Apellido #{i}",
     dni: rand(10000000..40000000),
     student_number: rand(0..100000),
+    email: "email#{i}@#{email_domains.sample}",
     course: course16)
 end
 
@@ -90,6 +91,7 @@ end
     last_name: "Apellido #{i}",
     dni: rand(10000000..40000000),
     student_number: rand(0..100000),
+    email: "email#{i}@#{email_domains.sample}",
     course: course17)
 end
 
