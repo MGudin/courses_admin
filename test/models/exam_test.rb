@@ -2,12 +2,6 @@ require 'test_helper'
 
 class ExamTest < ActiveSupport::TestCase
 
-    @exam = Exam.new(title: "Ruby",
-                     description: "Conceptos basicos del lenguaje",
-                     min_grade: 4,
-                     exam_date: DateTime.new,
-                     course_id: 1)
-
     test "exam shouldnt save when title is missing" do
       exam = exam_with_attr title: nil
       assert_not exam.valid?
@@ -40,16 +34,16 @@ class ExamTest < ActiveSupport::TestCase
     private
     def exam_with_attr **attrs
       # returns a new instance of exam with nil attrs
-      exam = new_exam
+      exam = sample_exam
       exam.attributes=attrs
       exam
     end
-    def new_exam
+    def sample_exam
       Exam.new({title: "Ruby",
                 description: "Conceptos basicos del lenguaje",
                 min_grade: 4,
                 exam_date: DateTime.new,
-                course_id: Course.first})
+                course: Course.first})
     end
     
       
