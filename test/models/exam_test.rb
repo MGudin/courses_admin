@@ -31,6 +31,27 @@ class ExamTest < ActiveSupport::TestCase
       exam = exam_with_attr title: "este titulo tiene mas de 20 caracteres"
       assert_not exam.valid?
     end
+
+    ## Students approved quantity
+    test "exam responds to students_passed method" do
+      exam = Exam.first
+      assert_respond_to exam, :students_pass_mark
+    end
+
+    test "exam student pass_mark returns 0 when no grades related" do
+      exam = sample_exam
+      exam.save
+      assert_equal 0, exam.students_pass_mark
+    end
+
+    test "exam returns correct values based on fixture" do
+      exam2 = Exam.find_by(title: "examen_dos")
+      assert_equal 1, exam2.students_pass_mark
+      exam1 = Exam.first
+      assert_equal 1, exam1.students_pass_mark
+    end
+
+    
     private
     def exam_with_attr **attrs
       # returns a new instance of exam with nil attrs
@@ -42,7 +63,7 @@ class ExamTest < ActiveSupport::TestCase
       Exam.new({title: "Ruby",
                 description: "Conceptos basicos del lenguaje",
                 min_grade: 4,
-                exam_date: DateTime.new,
+                exam_date: DateTime.now,
                 course: Course.first})
     end
     
