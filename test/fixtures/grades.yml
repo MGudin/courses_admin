@@ -11,3 +11,9 @@ grade_two:
   student: student_two
   exam: exam_two
   course: course_two
+
+grade_three:
+  grade: 7
+  student: student_three
+  exam: exam_two
+  course: course_two

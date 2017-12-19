@@ -15,3 +15,19 @@ student_two:
   student_number: 2
   email: sarasa2@yahoo.com.ar
   course: course_two
+
+student_three:
+  name: Juan
+  last_name: Sarasa
+  dni: 23
+  student_number: 22
+  email: sarasa3@yahoo.com.ar
+  course: course_two
+
+student_four:
+  name: Jack
+  last_name: Daniels
+  dni: 234
+  student_number: 223
+  email: daniels@yahoo.com.ar
+  course: course_two
