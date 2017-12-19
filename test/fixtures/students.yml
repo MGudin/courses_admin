@@ -5,6 +5,7 @@ one:
   last_name: u_estudiante_ap
   dni: 1
   student_number: 1
+  email: sarasa@gmail.com
   course_id: 1
 
 two:
@@ -12,4 +13,5 @@ two:
   last_name: o_estudiante_ap
   dni: 2
   student_number: 2
+  email: sarasa2@yahoo.com.ar
   course_id: 2

@@ -26,6 +26,11 @@ class StudentTest < ActiveSupport::TestCase
     assert_not student.valid?
   end
 
+  test "test student isnt valid without email" do
+    student = student_with_attr email: nil
+    assert_not student.valid?
+  end
+  
   test "name size should not be greater than 20" do
     student = student_with_attr name: "un nombre realmente muy largo"
     assert_not student.valid?
@@ -64,6 +69,12 @@ class StudentTest < ActiveSupport::TestCase
     student = student_with_attr student_number: -1
     assert_not student.valid?
   end
+
+  test "student email has propper format" do
+    student = student_with_attr email: "sarasa"
+    puts student.valid?
+    assert_not student.valid?
+  end
   
   private
   def student_with_attr **attrs
@@ -77,6 +88,7 @@ class StudentTest < ActiveSupport::TestCase
                 last_name: "Doe",
                 dni: 32333444,
                 student_number: 123232,
+                email: "sarasa@gmail.com",
                 course_id: 1)
   end
 end
