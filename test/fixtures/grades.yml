@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+grade_one:
   grade: 10
-  student: one
-  exam: one
-  course: one
+  student: student_one
+  exam: exam_one
+  course: course_one
 
-two:
+grade_two:
   grade: 3
-  student: two
-  exam: two
-  course: two
+  student: student_two
+  exam: exam_two
+  course: course_two

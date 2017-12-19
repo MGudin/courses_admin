@@ -1,16 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+exam_one:
   title: examen_uno
   description: un_examen
   min_grade: 4
   exam_date: "2016-10-11 19:00:00"
-  course_id: 1
+  course: course_one
   
-two:
+exam_two:
   title: examen_dos
   description: otro_examen
-  min_grade: 4
+  min_grade: 6
   exam_date: "2017-12-10 19:00:00"
-  course_id: 2
+  course: course_two
 

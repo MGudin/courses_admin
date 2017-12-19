@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+course_one:
   year: 2016
 
-two:
+course_two:
   year: 2017
