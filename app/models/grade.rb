@@ -11,16 +11,4 @@ class Grade < ApplicationRecord
   # uniqueness of index (exam, student)
   validates :exam,
             uniqueness: { scope: :student }
-
-  
-  # tira error. Ver preguntas.
-  # validates :exam,
-  #           future: true
-  # pach?
-  # validates_each :exam do |record, attr, value|
-  #   if DateTime.new(value.exam_date) > DateTime.now
-  #     record.errors.add(attr, "exam didn't happened yed")
-  #   end
-  # end
-  
 end

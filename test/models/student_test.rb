@@ -75,8 +75,11 @@ class StudentTest < ActiveSupport::TestCase
   test "student email has propper format" do
     student = student_with_attr email: "sarasa"
     assert_not student.save
+    student.email= "sarasa@gmail.com"
+    assert student.valid?
   end
-  
+
+
   private
   def student_with_attr **attrs
     s = sample_student

@@ -32,7 +32,7 @@ class Student < ApplicationRecord
   ## email
   validates :email,
             presence: true,
-            email: true
+            valid_email:  true
             
   
   ## course_id
