@@ -41,7 +41,6 @@ class GradeTest < ActiveSupport::TestCase
     exam = Exam.find_by course: student.course
     assert_instance_of Integer, Grade.student_grade(student, exam)
   end
-
   private
   def sample_grade
     Grade.new(grade: 6,
