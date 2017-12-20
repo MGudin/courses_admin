@@ -39,4 +39,12 @@ class Student < ApplicationRecord
   validates :course,
             presence: true
 
+
+  def get_grades
+    grades = Hash[self.grades.map {|grades| [grades.exam, grades.grade]}]
+    # {exam2: grade, ..., examn:grade}
+    exam_grade = Hash[self.course.exams.map{|exam| [exam,"ausente"]}]
+    # { exam1: "ausente", .... , examn: "ausente"}
+    exam_grade.merge! grades #update base hash with grades
+  end
 end

@@ -2,15 +2,21 @@
 
 exam_one:
   title: examen_uno
-  description: un_examen
+  description: examen_del_2016
   min_grade: 4
   exam_date: "2016-10-11 19:00:00"
   course: course_one
   
 exam_two:
   title: examen_dos
-  description: otro_examen
+  description: examen_del_2017
   min_grade: 6
   exam_date: "2017-12-10 19:00:00"
   course: course_two
 
+exam_three:
+  title: examen_tres
+  description: examen_del_2017
+  min_grade: 4
+  exam_date: "2017-12-19 19:00:00"
+  course: course_two

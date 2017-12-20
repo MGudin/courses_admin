@@ -76,6 +76,62 @@ class StudentTest < ActiveSupport::TestCase
     student = student_with_attr email: "sarasa"
     assert_not student.save
   end
+  ## methods
+  test "student object responds to #get_grades method" do
+    student = Student.first
+    assert_respond_to student, :get_grades
+  end
+
+  test "#get_grades responds a hash with course exams for student" do
+    student = Student.first
+    assert_instance_of Hash, student.get_grades
+  end
+
+  test "#get_grades keys are exams of student's course" do
+    student = Student.first
+    course = student.course
+    exams = course.exams
+    grades = student.get_grades
+    # test each key is included in all exams
+    grades.each_key do |key|
+      assert_includes exams, key
+    end
+    # tests all exams are included in keys array
+    exams.each do |exam|
+      assert_includes grades.keys, exam
+    end
+    # key includes exams and exams includes keys <=> keys = exams
+    
+    # now a course with 2 exams
+    course = Course.last # course n2
+    student = course.students.first
+    exams = course.exams
+    grades = student.get_grades
+    grades.each_key do |key|
+      assert_includes exams, key
+    end
+    exams.each do |exam|
+      assert_includes grades.keys, exam
+    end
+  end
+
+  # such ugliness... TODO: REFACTOR!
+  test "test results with student without absenses " do
+    # get a student with no absenses
+    student = Student.where(name: "juan").first
+    # get the grades hash. { exam: grade ....}
+    student_grades = student.get_grades
+    # get the exams for the students course. [exam1, exam2, ...]
+    exams = student.course.exams
+    
+    student_grades.each_with_object(exams) do |key_value, ex|
+      assert_equal key_value.last,
+                   Grade.where(exam: (ex.select {|e| e == key_value.first }.first), student: student)
+                     .first
+                     .grade
+    end
+  end
+  
   
   private
   def student_with_attr **attrs
