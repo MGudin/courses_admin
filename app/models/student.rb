@@ -47,4 +47,8 @@ class Student < ApplicationRecord
     # { exam1: "ausente", .... , examn: "ausente"}
     exam_grade.merge! grades #update base hash with grades
   end
+
+  def to_s
+    "#{self.name} #{self.last_name}"
+  end
 end

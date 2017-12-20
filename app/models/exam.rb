@@ -45,4 +45,7 @@ class Exam < ApplicationRecord
     end
   end
 
+  def to_s
+    self.title
+  end
 end

@@ -1,6 +1,6 @@
-<h1>Editing Student</h1>
+<h1>Editar Estudiante</h1>
 
 <%= render 'form', student: @student %>
 
-<%= link_to 'Show', @student %> |
-<%= link_to 'Back', students_path %>
+<%= link_to 'Ver', @student, class: 'btn btn-success' %>
+<%= link_to 'Volver', students_path, class: 'btn btn-primary' %>

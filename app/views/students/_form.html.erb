@@ -1,37 +1,14 @@
-<%= form_with(model: student, local: true) do |form| %>
-  <% if student.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
+<%= bootstrap_form_for(@student) do |form| %>
 
-      <ul>
-      <% student.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
     <%= form.text_field :name, id: :student_name %>
-  </div>
 
-  <div class="field">
-    <%= form.label :last_name %>
     <%= form.text_field :last_name, id: :student_last_name %>
-  </div>
 
-  <div class="field">
-    <%= form.label :dni %>
     <%= form.number_field :dni, id: :student_dni %>
-  </div>
 
-  <div class="field">
-    <%= form.label :student_number %>
     <%= form.number_field :student_number, id: :student_student_number %>
-  </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="actions">
+        <%= form.submit %>
+    </div>
 <% end %>

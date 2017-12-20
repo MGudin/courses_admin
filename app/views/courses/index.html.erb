@@ -1,28 +1,27 @@
-<p id="notice"><%= notice %></p>
+<h1>Cursos</h1>
 
-<h1>Courses</h1>
+<table class="table table-stripped">
+    <thead>
+        <tr>
+            <th>Year</th>
+            <th colspan="3"></th>
+        </tr>
+    </thead>
 
-<table>
-  <%= link_to 'Deslogear', destroy_user_session_path, method: :delete, data: {confirm: 'seguro che'} %>
-  <thead>
-    <tr>
-      <th>Year</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @courses.each do |course| %>
-      <tr>
-        <td><%= course.year %></td>
-        <td><%= link_to 'Show', course %></td>
-        <td><%= link_to 'Edit', edit_course_path(course) %></td>
-        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+    <tbody>
+        <% @courses.each do |course| %>
+            <tr>
+                <td><%= course.year %></td>
+                <td>
+                    <%= link_to 'Ver', course, class: 'btn btn-success' %>
+                    <%= link_to 'Editar', edit_course_path(course), class: 'btn btn-primary' %>
+                    <%= link_to 'Eliminar', course, method: :delete, data: { confirm: 'Seguro que desea eliminar este curso?' }, class: 'btn btn-danger' %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Course', new_course_path %>
+<%= link_to 'Crear curso nuevo', new_course_path, class: 'btn btn-success' %>

@@ -1,22 +1,19 @@
-<%= form_with(model: course, local: true) do |form| %>
+<%= bootstrap_form_for(course, local: true) do |form| %>
   <% if course.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
 
       <ul>
-      <% course.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% course.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :year %>
-    <%= form.number_field :year, id: :course_year %>
-  </div>
+  <%= form.number_field :year, id: :course_year %>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Crear', class: 'btn btn-success' %>
   </div>
 <% end %>
