@@ -20,7 +20,6 @@ class ExamsController < ApplicationController
 
   # GET /exams/1/edit
   def edit
-    @action="Modificar"
   end
 
   # POST /exams

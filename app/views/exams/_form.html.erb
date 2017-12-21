@@ -22,15 +22,15 @@
         input_html: {id: :exam_exam_date},
         wrapper_html: {class: 'form-group'} %>
 
-        
-  <div class="actions">
-  <%= form.submit @action,
-      class: 'btn btn-success',
-      wrapper_html: {class: 'form-group'} %>
 
-  <%= link_to 'Volver',
-      :back,
-      class: 'btn btn-primary' %>
-  </div>
-  
+    <div class="actions">
+        <%= form.submit @exam.persisted? ? 'Modificar' : 'Crear',
+            class: 'btn btn-success',
+            wrapper_html: {class: 'form-group'} %>
+
+        <%= link_to 'Volver',
+            :back,
+            class: 'btn btn-primary' %>
+    </div>
+
 <% end %>
