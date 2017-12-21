@@ -22,7 +22,8 @@ class Exam < ApplicationRecord
   validates :course,
             presence: true
 
-
+  # callbacks
+  before_destroy :erase_related_grades
   
   def approved_students
    self.grades.where('grade>=?', self.min_grade).size
@@ -47,5 +48,10 @@ class Exam < ApplicationRecord
 
   def to_s
     self.title
+  end
+
+  private
+  def erase_related_grades
+    self.grades.destroy_all
   end
 end
