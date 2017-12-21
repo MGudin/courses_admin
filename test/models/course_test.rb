@@ -35,5 +35,16 @@ class CourseTest < ActiveSupport::TestCase
     assert_empty Student.where(course_id: course_id)
   end
 
-  
+  ### Update
+  ### upon update exams related should change their dates
+  ### to reflect the change.
+  test "course#update should change exams related dates year" do
+    course = Course.second
+    course.year = course.year + 1
+    course.save
+    puts Course.second.year
+    course.exams.each do |exam|
+      assert_equal course.year, exam.exam_date.year
+    end
+  end
 end
