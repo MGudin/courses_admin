@@ -1,7 +1,7 @@
-<%= bootstrap_form_for(course, local: true) do |form| %>
+<%= simple_form_for @course do |form| %>
   <% if course.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
+      <h2><%= pluralize(course.errors.count, "error") %> No se pudo guardar el curso: </h2>
 
       <ul>
         <% course.errors.full_messages.each do |message| %>
@@ -11,9 +11,17 @@
     </div>
   <% end %>
 
-  <%= form.number_field :year, id: :course_year %>
+  <%= form.input :year,
+      label: 'Año',
+      input_html: {id: :course_year},
+      wrapper_html: {class: 'form-group'} %>
 
   <div class="actions">
-    <%= form.submit 'Crear', class: 'btn btn-success' %>
+  <%= form.submit @action,
+      class: 'btn btn-success',
+      wrapper_html: {class: 'form-group'} %>
+  <%= link_to 'Volver',
+      courses_path,
+      class: 'btn btn-primary' %>
   </div>
 <% end %>
