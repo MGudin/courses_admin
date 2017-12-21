@@ -42,7 +42,6 @@ class CourseTest < ActiveSupport::TestCase
     course = Course.second
     course.year = course.year + 1
     course.save
-    puts Course.second.year
     course.exams.each do |exam|
       assert_equal course.year, exam.exam_date.year
     end
