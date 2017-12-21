@@ -1,32 +1,36 @@
-<%= simple_form_for @exam do |form| %>
-  <% if exam.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(exam.errors.count, "error") %> prohibited this exam from being saved:</h2>
 
-      <ul>
-      <% exam.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= simple_form_for [@course, @exam] do |form| %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :exam_title %>
-  </div>
+    <%= form.input :title,
+        label: 'Titulo',
+        input_html: {id: :exam_title},
+        wrapper_html: {class: 'form-group'} %>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description, id: :exam_description %>
-  </div>
+    <%= form.input :description,
+        label: 'Descripcion',
+        input_html: {id: :exam_description},
+        wrapper_html: {class: 'form-group'} %>
 
-  <div class="field">
-    <%= form.label :min_grade %>
-    <%= form.number_field :min_grade, id: :exam_min_grade %>
-  </div>
+    <%= form.input :min_grade,
+        label: 'Nota de aprobacion',
+        input_html: {id: :exam_min_grade},
+        wrapper_html: {class: 'form-group'} %>
 
+
+    <%= form.input :exam_date,
+        label: 'Fecha ',
+        input_html: {id: :exam_exam_date},
+        wrapper_html: {class: 'form-group'} %>
+
+        
   <div class="actions">
-    <%= form.submit %>
+  <%= form.submit @action,
+      class: 'btn btn-success',
+      wrapper_html: {class: 'form-group'} %>
+
+  <%= link_to 'Volver',
+      :back,
+      class: 'btn btn-primary' %>
   </div>
+  
 <% end %>

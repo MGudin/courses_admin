@@ -115,7 +115,13 @@ class ExamTest < ActiveSupport::TestCase
       Grade.create exam: exam2, student: student, course: exam2.course, grade: exam2.min_grade+1
       assert_equal 66.66, exam2.approved_rate
     end
-
+    ## Actions
+    # destroy
+    test "test exam on destroy erases all grades related" do
+      exam = Exam.find_by(title: "examen_dos")
+      exam.destroy
+      assert_empty Grade.where(exam_id: exam.id)
+    end
     private
     def exam_with_attr **attrs
       # returns a new instance of exam with nil attrs

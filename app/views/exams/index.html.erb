@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Examenes de la cursada <%= @course %></h1>
 
 <table class="table table-stripped">
@@ -20,16 +18,16 @@
         <td class="text-center"><%= exam.min_grade %></td>
         <td class="text-center">
           <%= link_to 'ver',
-              course_exams_path(exam),
+              course_exam_path(@course.id, exam),
               class: 'btn btn-success' %>
         </td>
         <td class="text-center">
           <%= link_to 'Editar',
-              edit_course_path(exam.course, exam),
+              edit_course_exam_path(@course.id, exam),
               class: 'btn btn-primary' %>
         </td>
         <td class="text-center"><%= link_to 'Eliminar',
-                url_for([exam.course, exam]),
+                course_exam_path(@course.id, exam),
                 method: :delete,
                 class: 'btn btn-danger',
                 data: { confirm: 'Are you sure?' } %>
