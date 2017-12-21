@@ -5,6 +5,7 @@ class ExamsController < ApplicationController
   # GET /exams.json
   def index
     @exams = Exam.all
+    @course = Course.find(params[:course_id])
   end
 
   # GET /exams/1
