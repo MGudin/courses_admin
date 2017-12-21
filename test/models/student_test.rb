@@ -118,24 +118,6 @@ class StudentTest < ActiveSupport::TestCase
     end
   end
 
-  # such ugliness... TODO: REFACTOR!
-  test "test results with student without absenses " do
-    # get a student with no absenses
-    student = Student.where(name: "juan").first
-    # get the grades hash. { exam: grade ....}
-    student_grades = student.get_grades
-    # get the exams for the students course. [exam1, exam2, ...]
-    exams = student.course.exams
-    
-    student_grades.each_with_object(exams) do |key_value, ex|
-      assert_equal key_value.last,
-                   Grade.where(exam: (ex.select {|e| e == key_value.first }.first), student: student)
-                     .first
-                     .grade
-    end
-  end
-  
-
   private
   def student_with_attr **attrs
     s = sample_student

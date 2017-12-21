@@ -47,14 +47,6 @@ class Student < ApplicationRecord
     return grades.find_by(exam: exam).try(:grade) || "ausente"
   end
 
-  def get_grades
-    grades = Hash[self.grades.map {|grades| [grades.exam, grades.grade]}]
-    # {exam2: grade, ..., examn:grade}
-    exam_grade = Hash[self.course.exams.map{|exam| [exam,"ausente"]}]
-    # { exam1: "ausente", .... , examn: "ausente"}
-    exam_grade.merge! grades #update base hash with grades
-  end
-
   def to_s
     "#{self.name} #{self.last_name}"
   end
