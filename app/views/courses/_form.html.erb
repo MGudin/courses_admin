@@ -1,16 +1,19 @@
 <%= simple_form_for @course do |form| %>
   <% if course.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(course.errors.count, "error") %> No se pudo guardar el curso: </h2>
-
-      <ul>
+    <div id="alert alert-danger">
         <% course.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+          <p><%= message %></p>
         <% end %>
-      </ul>
     </div>
   <% end %>
 
+  <% if @info %>
+  <div class="alert alert-info">
+    <p>
+      <%= @info %>
+    </p>
+  </div>
+  <% end %>
   <%= form.input :year,
       label: 'Año',
       input_html: {id: :course_year},

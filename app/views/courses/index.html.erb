@@ -17,7 +17,10 @@
       <td colspan="3">
         <%= link_to 'Ver', course, class: 'btn btn-success' %>
         <%= link_to 'Editar', edit_course_path(course), class: 'btn btn-primary' %>
-        <%= link_to 'Eliminar', course, method: :delete, data: { confirm: 'Seguro que desea eliminar este curso?' }, class: 'btn btn-danger' %>
+        <%= link_to 'Eliminar',
+            course,
+            method: :delete,
+            class: 'btn btn-danger' %>
       </td>
       <td colspan="2">
         <%= link_to 'Listado', course_exams_path(course), class: 'btn btn-success' %>

@@ -1,3 +1,4 @@
+# coding: utf-8
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
@@ -21,6 +22,7 @@ class CoursesController < ApplicationController
   # GET /courses/1/edit
   def edit
     @action = "Modificar"
+    @info= "El cambio del año de cursada implica cambiar el año en la fecha de los examenes asociados"
   end
 
   # POST /courses
