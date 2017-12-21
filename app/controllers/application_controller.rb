@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, :set_course
 
   def set_course
-    @course = Course.find(params[:course_id] || params[:id])
+    id = params[:course_id] || params[:id]
+    @course = Course.find(id) if id
   end
 end
