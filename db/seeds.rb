@@ -103,3 +103,8 @@ Student.all.each do |student|
   end
 end
 
+admin = User.new()
+admin.email = "admin@admin.com"
+admin.password = "sarasa"
+admin.password_confirmation = "sarasa"
+admin.save
