@@ -2,5 +2,5 @@
 
 <%= render 'form', student: @student %>
 
-<%= link_to 'Ver', @student, class: 'btn btn-success' %>
-<%= link_to 'Volver', students_path, class: 'btn btn-primary' %>
+<%= link_to 'Ver', course_student_path(@student), class: 'btn btn-success' %>
+<%= link_to 'Volver', course_students_path(@course), class: 'btn btn-primary' %>

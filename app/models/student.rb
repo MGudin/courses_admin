@@ -1,5 +1,6 @@
 class Student < ApplicationRecord
   belongs_to :course
+  before_destroy :destroy_grades
 
   has_many :grades
   has_many :exams, through: :grades
@@ -10,12 +11,11 @@ class Student < ApplicationRecord
             presence: true,
             length: {maximum: 20},
             allow_blank: false
-  ## last_name 
+  ## last_name
   validates :last_name,
             presence: true,
             length: {maximum: 20},
             allow_blank: false
-
 
   ## dni
   validates :dni,
@@ -33,12 +33,19 @@ class Student < ApplicationRecord
   validates :email,
             presence: true,
             valid_email:  true
-            
-  
+
+
   ## course_id
   validates :course,
             presence: true
 
+  def destroy_grades
+    grades.destroy_all
+  end
+
+  def grade_for(exam)
+    return grades.find_by(exam: exam).try(:grade) || "ausente"
+  end
 
   def get_grades
     grades = Hash[self.grades.map {|grades| [grades.exam, grades.grade]}]

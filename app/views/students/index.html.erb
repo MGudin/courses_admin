@@ -19,9 +19,9 @@
                 <td><%= student.dni %></td>
                 <td><%= student.student_number %></td>
                 <td>
-                    <%= link_to 'Ver', student, class: 'btn btn-primary' %>
-                    <%= link_to 'Editar', edit_student_path(student), class: 'btn btn-success' %>
-                    <%= link_to 'Eliminar', student, method: :delete, data: { confirm: 'Seguro que desea eliminar este estudiante?' }, class: 'btn btn-danger' %>
+                    <%= link_to 'Ver', course_student_path(@course, student), class: 'btn btn-primary' %>
+                    <%= link_to 'Editar', edit_course_student_path(@course, student), class: 'btn btn-success' %>
+                    <%= link_to 'Eliminar', course_student_path(@course, student), method: :delete, data: { confirm: 'Seguro que desea eliminar este estudiante?' }, class: 'btn btn-danger' %>
                 </td>
             </tr>
         <% end %>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'Crear Estudiante', new_student_path, class: 'btn btn-success' %>
+<%= link_to 'Crear Estudiante', new_course_student_path(@course), class: 'btn btn-success' %>
