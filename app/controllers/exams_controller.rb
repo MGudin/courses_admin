@@ -31,7 +31,7 @@ class ExamsController < ApplicationController
     @exam.course = @course
     respond_to do |format|
       if @exam.save
-        format.html { redirect_to course_exams_path(@course), notice: 'Exam was successfully created.' }
+        format.html { redirect_to course_exams_path(@course), notice: 'La evaluacion fue creada exitosamente' }
         format.json { render :show, status: :created, location: @exam }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class ExamsController < ApplicationController
   def update
     respond_to do |format|
       if @exam.update(exam_params)
-        format.html { redirect_to course_exams_path(), notice: 'Exam was successfully updated.' }
+        format.html { redirect_to course_exams_path(), notice: 'La evaluacion fue modificada exitosamente.' }
         format.json { render :show, status: :ok, location: @exam }
       else
         format.html { render :edit }
@@ -59,7 +59,7 @@ class ExamsController < ApplicationController
   def destroy
     @exam.destroy
     respond_to do |format|
-      format.html { redirect_to course_exams_path(@course), notice: 'Exam was successfully destroyed.' }
+      format.html { redirect_to course_exams_path(@course), notice: 'La evaluacion fue borrada exitosamente.' }
       format.json { head :no_content }
     end
   end
