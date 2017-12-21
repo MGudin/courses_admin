@@ -75,23 +75,29 @@ Exam.create([{
 
 ## adds some Students
 email_domains = ["gmail.com", "outlook.com", "yahoo.com.ar"]
-10.times do |i|
+names = ["Pedro", "Juana", "Miguel", "Rocio", "Eustaquio", "Alicia"]
+last_names = ["Gonzales", "Vega", "Garcia", "Romero", "Sarasa" ]
+5.times do |i|
+  name = names.sample
+  last_name = last_names.sample
   Student.create(
-    name: "Nombre #{i}",
-    last_name: "Apellido #{i}",
+    name: name,
+    last_name: last_name,
     dni: rand(10000000..40000000),
     student_number: rand(0..100000),
-    email: "email#{i}@#{email_domains.sample}",
+    email: "#{name}#{last_name}@#{email_domains.sample}",
     course: course16)
 end
 
-10.times do |i|
+7.times do |i|
+  name = names.sample
+  last_name = last_names.sample
   Student.create(
-    name: "Nombre #{i}",
-    last_name: "Apellido #{i}",
+    name: name,
+    last_name: last_name,
     dni: rand(10000000..40000000),
     student_number: rand(0..100000),
-    email: "email#{i}@#{email_domains.sample}",
+    email: "#{name}#{last_name}@#{email_domains.sample}",
     course: course17)
 end
 
@@ -102,7 +108,13 @@ Student.all.each do |student|
     Grade.create(exam: exam, student: student, grade: rand(0..10), course: student.course)
   end
 end
+# remove some grades so there will be some absents
+grades = Grade.all
+20.times do
+  grades.sample.destroy
+end
 
+## devise admin user
 admin = User.new()
 admin.email = "admin@admin.com"
 admin.password = "sarasa"
