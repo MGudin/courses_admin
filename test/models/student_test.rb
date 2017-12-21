@@ -80,44 +80,6 @@ class StudentTest < ActiveSupport::TestCase
   end
 
   ## methods
-  test "student object responds to #get_grades method" do
-    student = Student.first
-    assert_respond_to student, :get_grades
-  end
-
-  test "#get_grades responds a hash with course exams for student" do
-    student = Student.first
-    assert_instance_of Hash, student.get_grades
-  end
-
-  test "#get_grades keys are exams of student's course" do
-    student = Student.first
-    course = student.course
-    exams = course.exams
-    grades = student.get_grades
-    # test each key is included in all exams
-    grades.each_key do |key|
-      assert_includes exams, key
-    end
-    # tests all exams are included in keys array
-    exams.each do |exam|
-      assert_includes grades.keys, exam
-    end
-    # key includes exams and exams includes keys <=> keys = exams
-    
-    # now a course with 2 exams
-    course = Course.last # course n2
-    student = course.students.first
-    exams = course.exams
-    grades = student.get_grades
-    grades.each_key do |key|
-      assert_includes exams, key
-    end
-    exams.each do |exam|
-      assert_includes grades.keys, exam
-    end
-  end
-
   private
   def student_with_attr **attrs
     s = sample_student
