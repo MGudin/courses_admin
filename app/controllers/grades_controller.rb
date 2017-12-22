@@ -4,7 +4,8 @@ class GradesController < ApplicationController
   # GET /grades
   # GET /grades.json
   def index
-    @grades = Grade.all
+    @exam = Exam.find(params[:exam_id])
+    @grades = @exam.grades
   end
 
   # GET /grades/1
@@ -65,6 +66,8 @@ class GradesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_grade
       @grade = Grade.find(params[:id])
+#      @exam = Exam.find(params[:exam_id])
+#      @grades = @course.exams.find[:exam_id].grades
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

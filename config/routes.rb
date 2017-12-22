@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   # resources :grades, only: [:index]
   # resources :students, only: [:index]
   resources :courses do
-    resources :exams
+    resources :exams do
+      resources :grades
+    end
     resources :students
   end
                                   

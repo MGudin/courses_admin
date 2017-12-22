@@ -1,10 +1,15 @@
-<p id="notice"><%= notice %></p>
+<h1>Notas del examen <%= @exam %> del <%= @course %></h1>
 
-<h1>Grades</h1>
-
-<table>
+<table class="table table-condensed">
   <thead>
+    
     <tr>
+      <th class="">
+        Estudiante
+      </th>
+      <th class="text-center">
+        Nota
+      </th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,13 +18,23 @@
     <% @grades.each do |grade| %>
     
     <tr>
-      <td> <%= grade.grade %> </td>
-      <td> <%= grade.course %> </td>
-      <td> <%= grade.exam %> </td>
       <td> <%= grade.student %> </td>
-        <td><%= link_to 'Show', grade %></td>
-        <td><%= link_to 'Edit', edit_grade_path(grade) %></td>
-        <td><%= link_to 'Destroy', grade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td class="text-center"> <%= grade.grade %> </td>
+      <td>
+        <%= link_to 'ver',
+            course_exam_grade_path(@course, grade.exam,grade),
+            class: 'btn btn-success'%>
+      </td>
+      <td>
+        <%= link_to 'Editar',
+            edit_course_exam_grade_path(@course, grade.exam, grade),
+            class: 'btn btn-primary' %>
+      </td>
+      <td><%= link_to 'Destroy',
+              course_exam_grade_path(@course, grade.exam,grade),
+              method: :delete,
+              class: 'btn btn-danger',
+              data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -27,4 +42,4 @@
 
 <br>
 
-<%= link_to 'New Grade', new_grade_path %>
+

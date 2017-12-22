@@ -7,6 +7,7 @@
       <th class="text-center">Descripcion</th>
       <th class="text-center">Nota de Aprobacion</th>
       <th colspan="3"></th>
+      <th class="text-center" colspan="2"> Notas </th>
     </tr>
   </thead>
 
@@ -31,6 +32,19 @@
                 method: :delete,
                 class: 'btn btn-danger',
                 data: { confirm: 'Are you sure?' } %>
+        </td>
+        <td class="text-center">
+          <%= link_to 'Listado',
+              course_exam_grades_path(@course.id, exam),
+              class: 'btn btn-success' %>
+        </td>
+
+        <td class="text-center">
+          <%= link_to 'Agregar',
+              course_exam_path(@course.id, exam),
+              method: :delete,
+              class: 'btn btn-primary',
+              data: { confirm: 'Are you sure?' } %>
         </td>
       </tr>
     <% end %>
