@@ -21,17 +21,12 @@
       <td> <%= grade.student %> </td>
       <td class="text-center"> <%= grade.grade %> </td>
       <td>
-        <%= link_to 'ver',
-            course_exam_grade_path(@course, grade.exam,grade),
-            class: 'btn btn-success'%>
-      </td>
-      <td>
         <%= link_to 'Editar',
-            edit_course_exam_grade_path(@course, grade.exam, grade),
+            edit_exam_grade_path(grade.exam, grade),
             class: 'btn btn-primary' %>
       </td>
-      <td><%= link_to 'Destroy',
-              course_exam_grade_path(@course, grade.exam,grade),
+      <td><%= link_to 'Borrar',
+              exam_grade_path(grade.exam,grade),
               method: :delete,
               class: 'btn btn-danger',
               data: { confirm: 'Are you sure?' } %></td>
@@ -40,6 +35,9 @@
   </tbody>
 </table>
 
-<br>
+<%= link_to 'Crear nota',
+   new_exam_grade_path(@exam),
+   class: 'btn btn-success' %>
+   
 
 

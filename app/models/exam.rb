@@ -50,6 +50,9 @@ class Exam < ApplicationRecord
     self.title
   end
 
+  def students_without_grades
+    self.course.students - self.students
+  end
   private
   def erase_related_grades
     self.grades.destroy_all

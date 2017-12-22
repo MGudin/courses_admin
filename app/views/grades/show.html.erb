@@ -1,3 +1,24 @@
+<h1> Notas del examen <%= @exam %> </h1>
 
-<%= link_to 'Edit', edit_grade_path(@grade) %> |
-<%= link_to 'Back', grades_path %>
+<table class="table table-stripped">
+  <thead>
+    <tr>
+      <td>
+        Estudiante
+      </td>
+      <td>
+        Nota
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+  
+<%= link_to 'Edit', edit_exam_grade_path(@grade) %> |
+<%= link_to 'Back', exam_grades_path(@exam) %>

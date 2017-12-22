@@ -1,4 +1,4 @@
-<%= form_with(model: grade, local: true) do |form| %>
+<%= simple_form_for([@exam, @grade]) do |form| %>
   <% if grade.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(grade.errors.count, "error") %> prohibited this grade from being saved:</h2>
@@ -11,23 +11,25 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :grade %>
-    <%= form.text_field :grade, id: :grade_grade %>
-  </div>
+  <% if ! @grade.persisted? %>
+  <%= form.association :student,
+      collection: exam.students_without_grades,
+      prompt: "Elija un estudiante" %>
+  <% end %>
+     
 
-  <div class="field">
-    <%= form.label :course %><br />
-    <%= form.collection_select(:course, Course.all, :id, :to_s ) %>
-  </div>
 
-  <div class="field">
-    <%= form.label :exam %><br />
-    <%= form.collection_select(:exam, Exam.all, :id, :to_s ) %>
-  </div>
+  
+    <%= form.input :grade,
+        label: 'nota' %>
   
   
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit @grade.persisted? ? 'Modificar' : 'Crear',
+        class: 'btn btn-success' %>
+
+    <%= link_to 'Cancelar',
+        exam_grades_path(@exam),
+        class: 'btn btn-primary'%>
   </div>
 <% end %>

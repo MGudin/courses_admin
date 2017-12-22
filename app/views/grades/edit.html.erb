@@ -1,6 +1,12 @@
-<h1>Editing Grade</h1>
+<h1> Editando la nota: </h1>
+
+<p> <strong>Estudiante:</strong> <%= @grade.student %></p>
+  
+<p> <strong>Examen: </strong> <%= @exam %></p>
+
+<p> <strong>Cursada: </strong> <%= @exam.course%>
 
 <%= render 'form', grade: @grade %>
 
-<%= link_to 'Show', @grade %> |
-<%= link_to 'Back', grades_path %>
+<%# <%= link_to 'Show', @grade %> |
+<%# <%= link_to 'Back', grades_path %>
