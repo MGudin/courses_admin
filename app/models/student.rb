@@ -11,6 +11,7 @@ class Student < ApplicationRecord
             presence: true,
             length: {maximum: 20},
             allow_blank: false
+   
   ## last_name
   validates :last_name,
             presence: true,
@@ -44,7 +45,7 @@ class Student < ApplicationRecord
   end
 
   def grade_for(exam)
-    return grades.find_by(exam: exam).try(:grade) || "ausente"
+    return self.grades.find_by(exam: exam).try(:grade) || "ausente"
   end
 
   def to_s

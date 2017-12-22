@@ -1,22 +1,22 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-<strong>Title:</strong>
+<strong>Titulo:</strong>
 <%= @exam.title %>
 </p>
 
 <p>
-<strong>Description:</strong>
+<strong>Descripcion:</strong>
 <%= @exam.description %>
 </p>
 
 <p>
-<strong>Min grade:</strong>
+<strong>Nota Minima:</strong>
 <%= @exam.min_grade %>
 </p>
 
-<%= link_to 'Editar',
+<%= link_to 'editar',
     edit_exam_path(@exam),
     class: 'btn btn-success' %>
 
-<%= link_to 'Volver', course_exams_path(@exam.course), class: 'btn btn-primary' %>
+<%= link_to 'volver', course_exams_path(@exam.course), class: 'btn btn-primary' %>

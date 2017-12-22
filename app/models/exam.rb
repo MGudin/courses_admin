@@ -17,14 +17,15 @@ class Exam < ApplicationRecord
             numericality: { only_integer: true, greater_than: 0 }
 
   validates :exam_date,
-            presence: true
+            presence: true,
+            allow_blank: false
   
   validates :course,
             presence: true
 
   # callbacks
   before_destroy :erase_related_grades
-  
+
   def approved_students
    self.grades.where('grade>=?', self.min_grade).size
   end

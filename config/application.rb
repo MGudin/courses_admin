@@ -13,7 +13,7 @@ module CoursesAdmin
     config.autoload_paths += %W["#{config.root}/app/validators/"]
 
     config.i18n.available_locales = ['es-AR', :es, :en]
-    config.i18n.default_locale = :es
+    config.i18n.default_locale = 'es-AR'
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

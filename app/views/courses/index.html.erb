@@ -12,6 +12,7 @@
     <% @courses.each do |course| %>
     <tr>
       <td><%= course.year %></td>
+      
       <td colspan="3">
         <%= link_to 'Ver', course, class: 'btn btn-success ' %>
         <%= link_to 'Editar', edit_course_path(course), class: 'btn btn-primary ' %>

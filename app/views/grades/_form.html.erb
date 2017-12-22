@@ -1,13 +1,12 @@
 <%= simple_form_for([@exam, @grade]) do |form| %>
   <% if grade.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(grade.errors.count, "error") %> prohibited this grade from being saved:</h2>
+    <div class="alert alert-danger" role="alert">
+      <p> <strong> numero de errores: <%= grade.errors.count %></strong></p>
 
-      <ul>
+      
       <% grade.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <p><%= message %></p>
       <% end %>
-      </ul>
     </div>
   <% end %>
 

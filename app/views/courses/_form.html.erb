@@ -1,6 +1,6 @@
 <%= simple_form_for @course do |form| %>
   <% if course.errors.any? %>
-    <div id="alert alert-danger">
+    <div class="alert alert-danger">
         <% course.errors.full_messages.each do |message| %>
           <p><%= message %></p>
         <% end %>

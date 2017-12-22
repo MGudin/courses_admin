@@ -1,4 +1,11 @@
 <%= simple_form_for([@course, @student]) do |form| %>
+  <% if student.errors.any? %>
+    <div class="alert alert-danger">
+        <% student.errors.full_messages.each do |message| %>
+          <p><%= message %></p>
+        <% end %>
+    </div>
+  <% end %>
 
 <%= form.input :name, value: 'Nombre' %>
 

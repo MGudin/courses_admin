@@ -87,6 +87,7 @@ class ExamsController < ApplicationController
                       .values.map do |e|
       e.to_i
     end
+    puts datetime_params
     DateTime.new *datetime_params
   end
 end

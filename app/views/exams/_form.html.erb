@@ -1,5 +1,12 @@
 
 <%= simple_form_for [@course, @exam] do |form| %>
+  <% if exam.errors.any? %>
+    <div class="alert alert-danger">
+        <% exam.errors.full_messages.each do |message| %>
+          <p><%= message %></p>
+        <% end %>
+    </div>
+  <% end %>
 
     <%= form.input :title,
         label: 'Titulo',
@@ -12,7 +19,7 @@
         wrapper_html: {class: 'form-group'} %>
 
     <%= form.input :min_grade,
-        label: 'Nota de aprobacion',
+        label: 'nota minima',
         input_html: {id: :exam_min_grade},
         wrapper_html: {class: 'form-group'} %>
 

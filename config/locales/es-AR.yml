@@ -1,18 +1,34 @@
 ---
 es-AR:
   activerecord:
+    models:
+      exam: evaluacion
+      course: cursada
+      grade: nota
+    attributes:
+      course:
+        year: año
+      exam:
+        course: cursada
+        title: titulo
+        description: descripcion
+        min_grade: nota minima
+        exam_date: fecha de examen
+      grade:
+        grade: nota
+        exam: evaluacion
+        student: estudiante
+      student:
+        name: nombre
+        last_name: apellido
+        dni: documento
+        student_number: nro de estudiante
     errors:
       messages:
         record_invalid: "La validación falló: %{errors}"
         restrict_dependent_destroy:
           has_one: No se puede eliminar el registro porque existe un %{record} dependiente
           has_many: No se puede eliminar el registro porque existen %{record} dependientes
-      models:
-        course:
-          attributes:
-            year:
-              taken: El año ya existe
-              blank: El año es requerido
   date:
     abbr_day_names:
     - dom
@@ -45,7 +61,7 @@ es-AR:
     - viernes
     - sábado
     formats:
-      default: "%d/%m/%Y"
+      default: "%Y/%m/%d"
       long: "%A, %d de %B de %Y"
       short: "%d de %b"
     month_names:
@@ -63,9 +79,9 @@ es-AR:
     - noviembre
     - diciembre
     order:
-    - :day
-    - :month
     - :year
+    - :month
+    - :day
   datetime:
     distance_in_words:
       about_x_hours:
@@ -113,7 +129,7 @@ es-AR:
       second: Segundos
       year: Año
   errors:
-    format: "%{attribute} %{message}"
+    format: "%{attribute}:%{message}"
     messages:
       accepted: debe ser aceptado
       blank: no puede estar en blanco
@@ -134,7 +150,7 @@ es-AR:
       not_an_integer: debe ser un entero
       odd: debe ser un número non
       required: debe existir
-      taken: ya ha sido tomado
+      taken: ya esta siendo utilizado
       too_long:
         one: es demasiado largo (máximo 1 caracter)
         other: es demasiado largo (máximo %{count} caracteres)
