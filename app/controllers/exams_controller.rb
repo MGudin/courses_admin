@@ -26,8 +26,8 @@ class ExamsController < ApplicationController
   # POST /exams.json
   def create
     @exam = Exam.new(exam_params)
-    @exam.exam_date = Date.today
     @exam.course = @course
+    @exam.exam_date = to_datetime exam_params
     respond_to do |format|
       if @exam.save
         format.html { redirect_to course_exams_path(@course), notice: 'La evaluacion fue creada exitosamente' }
@@ -71,6 +71,16 @@ class ExamsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def exam_params
-    params.require(:exam).permit(:title, :description, :min_grade)
+    params.require(:exam).permit(:title, :description, :min_grade, :exam_date)
+  end
+
+  def to_datetime request_params
+    datetime_params = request_params.select do |k,v|
+      k =~ /exam_date\(/
+    end
+                      .values.map do |e|
+      e.to_i
+    end
+    DateTime.new *datetime_params
   end
 end
