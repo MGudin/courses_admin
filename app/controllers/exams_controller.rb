@@ -1,11 +1,10 @@
 class ExamsController < ApplicationController
   before_action :set_exam, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_course, only: [:index]
   # GET /exams
   # GET /exams.json
   def index
-    @exams = Exam.all
-    @course = Course.find(params[:course_id])
+    @exams = @course.exams
   end
 
   # GET /exams/1
@@ -73,6 +72,9 @@ class ExamsController < ApplicationController
     @exam = Exam.find(params[:id])
   end
 
+  def set_course
+    @course = Course.find(params[:course_id])
+  end
   # Never trust parameters from the scary internet, only allow the white list through.
   def exam_params
     params.require(:exam).permit(:title, :description, :min_grade, :exam_date)

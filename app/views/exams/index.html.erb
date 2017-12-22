@@ -1,3 +1,10 @@
+<%= link_to 'Estudiantes',
+    course_students_path(@course),
+    class: 'btn btn-primary' %>
+<%= link_to 'Curso',
+    course_path(@course),
+    class: 'btn btn-primary' %>
+
 <h1>Examenes de la cursada <%= @course %></h1>
 
 <table class="table table-stripped">
