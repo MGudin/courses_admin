@@ -19,30 +19,29 @@
         <td class="text-center"><%= exam.min_grade %></td>
         <td class="text-center">
           <%= link_to 'ver',
-              course_exam_path(@course.id, exam),
+              exam_path(exam),
               class: 'btn btn-success' %>
         </td>
         <td class="text-center">
           <%= link_to 'Editar',
-              edit_course_exam_path(@course.id, exam),
+              edit_exam_path(exam),
               class: 'btn btn-primary' %>
         </td>
         <td class="text-center"><%= link_to 'Eliminar',
-                course_exam_path(@course.id, exam),
+                exam_path(exam),
                 method: :delete,
                 class: 'btn btn-danger',
                 data: { confirm: 'Are you sure?' } %>
         </td>
         <td class="text-center">
           <%= link_to 'Listado',
-              course_exam_grades_path(@course.id, exam),
+              exam_grades_path(exam),
               class: 'btn btn-success' %>
         </td>
 
         <td class="text-center">
           <%= link_to 'Agregar',
-              course_exam_path(@course.id, exam),
-              method: :delete,
+              new_exam_grade_path(exam),
               class: 'btn btn-primary',
               data: { confirm: 'Are you sure?' } %>
         </td>

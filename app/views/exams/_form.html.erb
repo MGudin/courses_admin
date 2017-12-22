@@ -28,8 +28,8 @@
             class: 'btn btn-success',
             wrapper_html: {class: 'form-group'} %>
 
-        <%= link_to 'Volver',
-            :back,
+        <%= link_to 'Cancelar',
+            course_exams_path( @exam.persisted? ? exam.course : params[:course_id]) ,
             class: 'btn btn-primary' %>
     </div>
 
