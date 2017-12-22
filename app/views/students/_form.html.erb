@@ -1,16 +1,20 @@
 <%= simple_form_for([@course, @student]) do |form| %>
 
-  <%= form.input :name, input_html: {id: :student_name}, wrapper_html: {class: 'form-group'} %>
+<%= form.input :name, value: 'Nombre' %>
 
-    <%= form.input :last_name, input_html: {id: :student_last_name}, wrapper_html: {class: 'form-group'} %>
+<%= form.input :last_name, value: 'Apellido' %>
 
-    <%= form.input :dni, input_html: {id: :student_dni}, wrapper_html: {class: 'form-group'} %>
+<%= form.input :dni, value: 'DNI' %>
 
-    <%= form.input :email, input_html: {id: :student_dni}, wrapper_html: {class: 'form-group'} %>
+<%= form.input :email, value: 'email' %>
 
-    <%= form.input :student_number, input_html: {id: :student_student_number}, wrapper_html: {class: 'form-group'} %>
+<%= form.input :student_number, value: 'numero de estudiante' %>
 
-    <div class="actions">
-      <%= form.submit class: 'btn btn-success', wrapper_html: {class: 'form-group'}%>
-    </div>
+<div class="actions">
+  <%= form.submit student.persisted? ? 'Modificar' : 'Crear',
+      class: 'btn btn-success'%>
+  <%= link_to 'Volver',
+      course_students_path(student.persisted? ? student.course : params[:course_id]),
+      class: 'btn btn-primary' %>
+</div>
 <% end %>

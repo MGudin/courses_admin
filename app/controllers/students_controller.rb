@@ -15,6 +15,7 @@ class StudentsController < ApplicationController
   # GET /students/new
   def new
     @student = Student.new
+    @course = Course.find(params[:course_id])
   end
 
   # GET /students/1/edit
@@ -25,11 +26,12 @@ class StudentsController < ApplicationController
   # POST /students.json
   def create
     @student = Student.new(student_params)
+    @course = Course.find(params[:course_id])
     @student.course = @course
 
     respond_to do |format|
       if @student.save
-        format.html { redirect_to course_student_url(@course, @student), notice: 'Student was successfully created.' }
+        format.html { redirect_to course_students_path(@course), notice: 'Student was successfully created.' }
         format.json { render :show, status: :created, location: @student }
       else
         format.html { render :new }
@@ -57,7 +59,7 @@ class StudentsController < ApplicationController
   def destroy
     @student.destroy
     respond_to do |format|
-      format.html { redirect_to course_students_url(@course), notice: 'Student was successfully destroyed.' }
+      format.html { redirect_to course_students_path(@course), notice: 'Student was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -66,10 +68,11 @@ class StudentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_student
       @student = Student.find(params[:id])
+      @course = Course.find(params[:course_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:name, :last_name, :dni, :student_number, :email)
+      params.require(:student).permit(:name, :last_name, :dni, :student_number, :email, :course)
     end
 end

@@ -19,5 +19,15 @@
 <%= @student.student_number %>
 </p>
 
-<%= link_to 'Editar', edit_course_student_path(@course, @student), class: 'btn btn-success' %>
-<%= link_to 'Volver', course_students_path(@course), class: 'btn btn-primary' %>
+<p>
+<strong>email</strong>
+<%= @student.email %>
+</p>
+
+<%= link_to 'Editar',
+    edit_course_student_path(@student.course, @student),
+    class: 'btn btn-success' %>
+
+<%= link_to 'Volver',
+    course_students_path(@student.course),
+    class: 'btn btn-primary' %>

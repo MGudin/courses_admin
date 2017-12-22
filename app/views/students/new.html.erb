@@ -1,5 +1,4 @@
 <h1>Crear Estudiante</h1>
 
-<%= render 'form', student: @student %>
+<%= render 'form', {student: @student, course: @course} %>
 
-<%= link_to 'Volver', course_students_path(@course), class: 'btn btn-primary' %>
