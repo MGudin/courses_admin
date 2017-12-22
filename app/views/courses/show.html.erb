@@ -1,28 +1,63 @@
 
 <h1>Cursada <%= @course.year %> </h1>
 
-<table class="table table-stripped" id="data-table">
-    <thead>
+<table class="table table-condensed" >
+  <thead>
+    <tr>
+      <th>
+        Estudiante
+      </th>
+      <% @exams.each do |exam| %>
+      <th><%= exam.title %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @students.each do |student| %>
+    <tr>
+      <td> <%= student.last_name %>, <%= student.name %></td>
+      <% @exams.each do |exam| %>
+      <td>
+        <%= student.grade_for exam %>
+      </td>
+      <% end %>
+    </tr>
+    <% end %>
+    <!-- estadisticas -->
+    <tr>
+      <td>
+        Cantidad de aprobados
+      </td>
+      <% @exams.each do |exam| %>
+      <td>
+        <%= exam.approved_students %>
+      </td>
+      <% end %>
+    </tr>
         <tr>
-            <th>examen</th>
-            <th>estudiante</th>
-            <th>nota</th>
+      <td>
+        Cantidad de desaprobados
+      </td>
+      <% @exams.each do |exam| %>
+      <td>
+        <%= exam.unapproved_students %>
+      </td>
+      <% end %>
         </tr>
-    </thead>
-    <tbody>
-        <% @course.exams.each do |exam| %>
-            <% @course.students.each do |student| %>
-                <tr>
-                    <td><%= exam %></td>
-                    <td><%= student %></td>
-                    <td><%= student.grade_for exam %></td>
-                </tr>
-            <% end %>
-        <% end %>
-    </tbody>
-</table>
+            <tr>
+      <td>
+        Porcentaje de aprobacion
+      </td>
+      <% @exams.each do |exam| %>
+      <td>
+        <%= exam.approved_rate %>
+      </td>
+      <% end %>
+    </tr>
 
-<p> Aca van las estadisticas </p>
+
+  </tbody>
+</table>
 
 <%= link_to 'Editar', edit_course_path(@course), class: 'btn btn-success' %>
 <%= link_to 'Volver', courses_path, class: 'btn btn-primary' %>
