@@ -1,5 +1,17 @@
-<h1>Notas del examen <%= @exam %> del <%= @course %></h1>
+<%= link_to 'Estudiantes',
+    course_students_path(@exam.course),
+    class: 'btn btn-primary' %>
 
+<%= link_to 'Evaluaciones',
+    course_exams_path(@exam.course),
+    class: 'btn btn-primary' %>
+<%= link_to 'Curso',
+    course_path(@exam.course),
+    class: 'btn btn-primary' %>
+
+<h1>Notas del examen <%= @exam %> del <%= @exam.course %></h1>
+
+<% if @grades.any? %>
 <table class="table table-condensed">
   <thead>
     
@@ -30,14 +42,14 @@
               method: :delete,
               class: 'btn btn-danger',
               data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    </tr>
     <% end %>
   </tbody>
 </table>
-
+<% else %>
+<h3> Aun no hay notas cargadas para este examen </h3>
+<% end %>
 <%= link_to 'Crear nota',
    new_exam_grade_path(@exam),
    class: 'btn btn-success' %>
-   
-
 

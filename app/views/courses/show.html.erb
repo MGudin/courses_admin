@@ -7,7 +7,9 @@
     class: 'btn btn-primary' %>
 
 <h1>Cursada <%= @course.year %> </h1>
+
 <% if @students.any? %>
+<h2> Estadisticas </h2>
 <table class="table table-condensed" >
   <thead>
     <tr>
@@ -31,9 +33,10 @@
     </tr>
     <% end %>
     <!-- estadisticas -->
+    <% if @exams.any? %>
     <tr>
       <td>
-        Cantidad de aprobados
+        <strong>Cantidad de aprobados</strong>
       </td>
       <% @exams.each do |exam| %>
       <td>
@@ -43,26 +46,26 @@
     </tr>
         <tr>
       <td>
-        Cantidad de desaprobados
+        <strong>Cantidad de desaprobados</strong>
       </td>
       <% @exams.each do |exam| %>
       <td>
-        <%= exam.unapproved_students %>
+        <%= exam.unapproved_students %> 
       </td>
       <% end %>
         </tr>
             <tr>
       <td>
-        Porcentaje de aprobacion
+        <strong>Porcentaje de aprobacion</strong>
       </td>
       <% @exams.each do |exam| %>
       <td>
-        <%= exam.approved_rate %>
+        <%= exam.approved_rate %> %
       </td>
       <% end %>
     </tr>
-
-
+<% end %>
+            
   </tbody>
 </table>
 

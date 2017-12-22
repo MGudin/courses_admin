@@ -6,7 +6,7 @@
     class: 'btn btn-primary' %>
 
 <h1>Examenes de la cursada <%= @course %></h1>
-
+<% if @exams.any? %>
 <table class="table table-stripped">
   <thead>
     <tr>
@@ -45,24 +45,16 @@
               exam_grades_path(exam),
               class: 'btn btn-success' %>
         </td>
-
-        <td class="text-center">
-          <%= link_to 'Agregar',
-              new_exam_grade_path(exam),
-              class: 'btn btn-primary',
-              data: { confirm: 'Are you sure?' } %>
-        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+<% else %>
+<h3> Aun no hay evaluaciones cargadas para el curso </h3>
+<% end %>
 <br>
 
 <%= link_to 'Agregar Examen',
     new_course_exam_path(@course.id),
     class: 'btn btn-success'
     %>
-<%= link_to 'Volver',
-    :back,
-    class: 'btn btn-primary' %>

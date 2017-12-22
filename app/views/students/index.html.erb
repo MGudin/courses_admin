@@ -1,4 +1,12 @@
+<%= link_to 'Evaluaciones',
+    course_exams_path(@course),
+    class: 'btn btn-primary' %>
+<%= link_to 'Curso',
+    course_path(@course),
+    class: 'btn btn-primary' %>
+
 <h1>Estudiantes</h1>
+
 <% if @students.any? %>
 <table class='table table-stripped'>
     <thead>
