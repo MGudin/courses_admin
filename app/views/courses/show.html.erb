@@ -1,6 +1,9 @@
 
+<%= link_to 'Estudiantes',
+    course_students_path(@course),
+    class: 'btn btn-primary' %>
 <h1>Cursada <%= @course.year %> </h1>
-
+<% if @students.any? %>
 <table class="table table-condensed" >
   <thead>
     <tr>
@@ -59,13 +62,10 @@
   </tbody>
 </table>
 
+<% else %>
+<h3> Esta cursada no tiene estudiantes aun </h3>
+<% end %>
+
 <%= link_to 'Editar', edit_course_path(@course), class: 'btn btn-success' %>
 <%= link_to 'Volver', courses_path, class: 'btn btn-primary' %>
 
-<link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" type="text/css" media="screen" charset="utf-8">
-<script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" charset="utf-8"></script>
-<script>
-$(document).ready(function(){
-    $('#data-table').DataTable();
-});
-</script>

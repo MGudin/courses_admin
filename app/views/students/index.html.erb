@@ -1,5 +1,5 @@
 <h1>Estudiantes</h1>
-
+<% if @students.any? %>
 <table class='table table-stripped'>
     <thead>
         <tr>
@@ -36,7 +36,9 @@
         <% end %>
     </tbody>
 </table>
-
+<% else %>
+Este curso no tiene estudiantes.
+<% end %>
 <br>
 
-<%= link_to 'Crear Estudiante', new_course_student_path(@students.first.course), class: 'btn btn-success' %>
+<%= link_to 'Crear Estudiante', new_course_student_path(@course), class: 'btn btn-success' %>
