@@ -73,3 +73,4 @@ flycheck_*.el
 # ignore Todo file
 todo.org
 
+config/secrets.yml
