@@ -1,24 +1,64 @@
-# README
+# Courses Admin
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Este es el trabajo integrador de la materia Taller de Tecnologias de
+Software opcion ruby.
 
-Things you may want to cover:
+Son requisitos para correr la aplicacion:
 
-* Ruby version
+- ruby ~> 2.4.1
+- rails ~> 5.1.4
+- bundler 
+- base de datos MySql
 
-* System dependencies
+**gemas:**
+- simple_form
+- mysql2
+- devise
 
-* Configuration
+Para correr la aplicacion:
 
-* Database creation
+- Bajar o clonar el repositorio a una carpeta
 
-* Database initialization
+``` shell
+$ git@github.com:chudix/courses_admin.git <carpeta>
+```
+- Instalar dependencias con bundler:
 
-* How to run the test suite
+``` shell
+$ bundle 
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+- crear el archivo un archivo /config/secrets.yml donde se pondran los
+  datos de acceso a la base de datos:
+  
+``` shell
+$ touch config/secrets.yml
+```
+*config/secrets.yml*
 
-* Deployment instructions
+``` yaml
+shared:
+  database_user: <usuario_db>
+  database_psswd: <passwd_db>
+```
+- Crear y sedear la base de datos ejecutando:
 
-* ...
+``` shell
+bundle exec rails db:setup
+```
+
+- opcinalmente ejecutar los test:
+
+``` shell
+bundle exec rails test 
+```
+
+- Finalmente: 
+
+``` shell
+bundle exec rails server
+```
+
+Deberia levantar la aplicacion en localhost:3000.
+
+
