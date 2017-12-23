@@ -8,9 +8,10 @@ Son requisitos para correr la aplicacion:
 - ruby ~> 2.4.1
 - rails ~> 5.1.4
 - bundler 
-- base de datos MySql
+- Ambiente con base de datos MySql
 
 **gemas:**
+
 - simple_form
 - mysql2
 - devise
@@ -28,12 +29,9 @@ $ git@github.com:chudix/courses_admin.git <carpeta>
 $ bundle 
 ```
 
-- crear el archivo un archivo /config/secrets.yml donde se pondran los
+- agregar al archivo /config/secrets.yml los
   datos de acceso a la base de datos:
-  
-``` shell
-$ touch config/secrets.yml
-```
+
 *config/secrets.yml*
 
 ``` yaml
@@ -41,6 +39,7 @@ shared:
   database_user: <usuario_db>
   database_psswd: <passwd_db>
 ```
+
 - Crear y sedear la base de datos ejecutando:
 
 ``` shell
